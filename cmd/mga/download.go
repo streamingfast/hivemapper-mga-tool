@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"mgaoffline/mga"
+	"github.com/streamingfast/hivemapper-mga-tool/mga"
 	"os"
 )
 

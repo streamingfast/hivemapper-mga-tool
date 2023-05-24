@@ -1,4 +1,4 @@
-module mgaoffline
+module github.com/streamingfast/hivemapper-mga-tool
 
 go 1.20
 
