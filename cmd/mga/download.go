@@ -30,7 +30,7 @@ func downloadCmdRun(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("error writing MGA data file %s: %w", "mgaoffine.ubx", err)
 	}
 
-	err = os.WriteFile("mgaoffine.md5", data, 0644)
+	err = os.WriteFile("mgaoffine.md5", []byte(h), 0644)
 	if err != nil {
 		return fmt.Errorf("error writing MGA md5 file %s: %w", "mgaoffine.md5", err)
 	}
