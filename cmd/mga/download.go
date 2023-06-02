@@ -18,21 +18,21 @@ func init() {
 	rootCmd.AddCommand(downloadCmd)
 }
 
-func downloadCmdRun(cmd *cobra.Command, args []string) error {
+func downloadCmdRun(_ *cobra.Command, args []string) error {
 	fmt.Println("Downloading MGA offline data")
 	data, h, err := mga.Download(args[0])
 	if err != nil {
 		return fmt.Errorf("error downloading MGA data: %w", err)
 	}
 
-	err = os.WriteFile("mgaoffine.ubx", data, 0644)
+	err = os.WriteFile("mgaoffline.ubx", data, 0644)
 	if err != nil {
-		return fmt.Errorf("error writing MGA data file %s: %w", "mgaoffine.ubx", err)
+		return fmt.Errorf("error writing MGA data file %s: %w", "mgaoffline.ubx", err)
 	}
 
-	err = os.WriteFile("mgaoffine.md5", []byte(h), 0644)
+	err = os.WriteFile("mgaoffline.md5", []byte(h), 0644)
 	if err != nil {
-		return fmt.Errorf("error writing MGA md5 file %s: %w", "mgaoffine.md5", err)
+		return fmt.Errorf("error writing MGA md5 file %s: %w", "mgaoffline.md5", err)
 	}
 	fmt.Println("MGA data downloaded", h)
 	return nil

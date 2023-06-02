@@ -34,10 +34,21 @@ func updateCmdRun(cmd *cobra.Command, args []string) error {
 
 	err = writeToS3(cmd.Context(), store, data, "mgaoffline.ubx")
 	if err != nil {
-		return fmt.Errorf("writing MGA data file %s: %w", "mgaoffine.ubx", err)
+		return fmt.Errorf("writing MGA data file %s: %w", "mgaoffline.ubx", err)
 	}
 
 	err = writeToS3(cmd.Context(), store, []byte(h), "mgaoffline.md5")
+	if err != nil {
+		return fmt.Errorf("writing MGA data file %s: %w", "mgaoffline.md5", err)
+	}
+
+	//remove the later ...
+	err = writeToS3(cmd.Context(), store, data, "mgaoffine.ubx")
+	if err != nil {
+		return fmt.Errorf("writing MGA data file %s: %w", "mgaoffine.ubx", err)
+	}
+
+	err = writeToS3(cmd.Context(), store, []byte(h), "mgaoffine.md5")
 	if err != nil {
 		return fmt.Errorf("writing MGA data file %s: %w", "mgaoffine.md5", err)
 	}
