@@ -26,7 +26,9 @@ jobs:
       env: 
         MGA_TOKEN: ${{ secrets.MGA_TOKEN }}
       run: |
-        pwd
+        URL="https://offline-live1.services.u-blox.com/GetOfflineData.ashx?token=${{ secrets.MGA_TOKEN }};gnss=gps"
+        cd mga
+        download "$URL"
 
     # - name: Check if file exists
     #   run: |
