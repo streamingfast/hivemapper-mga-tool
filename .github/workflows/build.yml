@@ -4,10 +4,11 @@
 name: Go
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
+  # push:
+  #   branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
 
 jobs:
 
@@ -21,8 +22,34 @@ jobs:
       with:
         go-version: 1.19
 
-    - name: Build
-      run: go build -v ./...
+    - name: Get Token
+      env: 
+        UBLOX_TOKEN: ${{ secrets.UBLOX_TOKEN }}
 
-    - name: Test
-      run: go test -v ./...
+    - name: Download
+      run: |
+        ls $GITHUB_WORKSPACE
+        pwd
+        URL="https://offline-live1.services.u-blox.com/GetOfflineData.ashx?token=${{ secrets.UBLOX_TOKEN }};gnss=gps"
+        $GITHUB_WORKSPACE/mga download "$URL"
+
+    - name: Check if file exists
+      run: |
+        set -e 
+        test mgaoffine.ubx
+        test mgaoffine.md5
+        cat mgaoffine.md5
+        md5sum mgaoffine.ubx
+    # - uses: shallwefootball/s3-upload-action@master
+    #     with:
+    #       aws_key_id: ${{ secrets.AWS_KEY_ID }} 
+    #       aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+    #       aws_bucket: ${{ secrets.AWS_BUCKET }}
+    #       source_dir: 'tmp/'
+    #       destination_dir: ${{ github.ref_name }}
+
+    # - name: Build
+    #   run: go build -v ./...
+
+    # - name: Test
+    #   run: go test -v ./...
