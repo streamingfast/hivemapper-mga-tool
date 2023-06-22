@@ -24,7 +24,7 @@ jobs:
 
     - name: Get Token
       env: 
-        UBLOX_TOKEN: ${{ secrets.UBLOX_TOKEN }}
+        UBLOX_TOKEN: ${{ secrets.MGA_TOKEN }}
 
     - name: Download
       run: |
