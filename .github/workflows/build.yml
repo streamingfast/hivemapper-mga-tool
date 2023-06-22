@@ -28,7 +28,8 @@ jobs:
       run: |
         URL="https://offline-live1.services.u-blox.com/GetOfflineData.ashx?token=${{ secrets.MGA_TOKEN }};gnss=gps"
         cd mga
-        download "$URL"
+        go build -o download download.go
+        ./download "$URL"
 
     # - name: Check if file exists
     #   run: |
