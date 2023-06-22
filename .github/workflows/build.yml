@@ -30,7 +30,7 @@ jobs:
         cd mga
         go build -o download download.go
         chmod +x download  
-        ./download "$URL"
+        ./download $URL
 
     # - name: Check if file exists
     #   run: |
