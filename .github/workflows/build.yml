@@ -26,7 +26,6 @@ jobs:
       env: 
         UBLOX_TOKEN: ${{ secrets.MGA_TOKEN }}
       run: |
-        ls $GITHUB_WORKSPACE
         pwd
         URL="https://offline-live1.services.u-blox.com/GetOfflineData.ashx?token=${{ secrets.UBLOX_TOKEN }};gnss=gps"
         $GITHUB_WORKSPACE/mga download "$URL"
