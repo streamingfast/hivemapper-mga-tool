@@ -54,6 +54,8 @@ jobs:
         echo "Configure complete"
         aws s3 cp cmd/mga/mgaoffline.ubx s3://$aws_s3_bucket/mgaoffline.ubx
         aws s3 cp cmd/mga/mgaoffline.md5 s3://$aws_s3_bucket/mgaoffline.md5
+        aws s3 cp cmd/mga/mgaoffine.ubx s3://$aws_s3_bucket/mgaoffine.ubx
+        aws s3 cp cmd/mga/mgaoffine.md5 s3://$aws_s3_bucket/mgaoffine.md5
 
         
       
