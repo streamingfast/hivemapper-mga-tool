@@ -35,6 +35,9 @@ jobs:
         ./mga  download "https://offline-live1.services.u-blox.com/GetOfflineData.ashx?token=${{ secrets.MGA_TOKEN }};gnss=gps"
         test mgaoffine.ubx
         test mgaoffine.md5
+        cp mgaoffline.md5 mgaoffine.md5
+        cp mgaoffline.ubx mgaoffine.ubx
+        ls -la
 
     - name: Copy file to  s3
       shell: bash
