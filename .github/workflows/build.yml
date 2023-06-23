@@ -39,7 +39,6 @@ jobs:
         ls -la
         test mgaoffine.ubx
         test mgaoffine.md5
-        cat mgaoffine.md5
         md5sum mgaoffine.ubx
     # - uses: shallwefootball/s3-upload-action@master
     #     with:
