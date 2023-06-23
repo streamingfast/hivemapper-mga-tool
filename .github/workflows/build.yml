@@ -44,7 +44,8 @@ jobs:
           aws_key_id: ${{ secrets.AWS_KEY_ID }} 
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
-          file-path: '/cmd/mga/mgaoffine.ubx'
+          source_dir: '/cmd/mga/mgaoffine.ubx'
+          destination_dir: ''
     # - name: Build
     #   run: go build -v ./...
 
