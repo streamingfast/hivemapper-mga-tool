@@ -34,7 +34,8 @@ jobs:
 
     - name: Check if file exists
       run: |
-        set -e 
+        pwd
+        ls -la
         test mgaoffine.ubx
         test mgaoffine.md5
         cat mgaoffine.md5
