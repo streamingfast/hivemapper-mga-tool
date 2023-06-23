@@ -43,8 +43,10 @@ jobs:
         aws_s3_bucket: ${{ secrets.S3_BUCKET }}
       run: |
         sudo apt-get update && sudo apt-get -y install awscli
+        pwd
         aws configure set aws_access_key_id $aws_key_id
         aws configure set aws_secret_access_key $aws_secret_access_key 
-        aws configure set default.region us-east-1
-        aws s3 cp 'cmd/mga/mgaoffline.ubx' s3://$aws_s3_bucket/
+        aws configure set default.region us-west-2
+        echo "Configure complete"
+        aws s3 cp cmd/mga/mgaoffline.ubx s3://$aws_s3_bucket/mgaoffline.ubx
       
