@@ -44,7 +44,8 @@ jobs:
           aws_key_id: ${{ secrets.AWS_KEY_ID }} 
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: cmd/mga/mgaoffine.ubx
+    - name: Upload file to S3 without overwriting
+      run: aws s3 cp cmd/mga/mgaoffine.ubx s3://dashcam-assets/ --no-clobber 
 
     # - name: Build
     #   run: go build -v ./...
