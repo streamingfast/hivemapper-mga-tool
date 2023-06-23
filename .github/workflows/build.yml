@@ -31,20 +31,16 @@ jobs:
         go build ./...
         ./mga  download "https://offline-live1.services.u-blox.com/GetOfflineData.ashx?token=${{ secrets.MGA_TOKEN }};gnss=gps"
         ls -la
-
-    - name: Check if file exists
-      run: |
         pwd
-        cd cmd/mga
-        ls -la
         test mgaoffine.ubx
         test mgaoffine.md5
+
     - uses: shallwefootball/s3-upload-action@master
       with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }} 
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: 'mgaoffine.ubx'
+          source_dir: 'cmd/mga/mgaoffine.ubx'
           destination_dir: ''
     # - name: Build
     #   run: go build -v ./...
