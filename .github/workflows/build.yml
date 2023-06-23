@@ -35,6 +35,7 @@ jobs:
     - name: Check if file exists
       run: |
         pwd
+        cd cmd/mga
         ls -la
         test mgaoffine.ubx
         test mgaoffine.md5
