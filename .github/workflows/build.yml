@@ -30,8 +30,6 @@ jobs:
         cd cmd/mga
         go build ./...
         ./mga  download "https://offline-live1.services.u-blox.com/GetOfflineData.ashx?token=${{ secrets.MGA_TOKEN }};gnss=gps"
-        ls -la
-        pwd
         test mgaoffine.ubx
         test mgaoffine.md5
 
@@ -43,7 +41,7 @@ jobs:
         aws_s3_bucket: ${{ secrets.AWS_BUCKET }}
       run: |
         sudo apt-get update && sudo apt-get -y install awscli
-        pwd
+        
         aws configure set aws_access_key_id $aws_key_id
         aws configure set aws_secret_access_key $aws_secret_access_key 
         aws configure set default.region us-west-2
