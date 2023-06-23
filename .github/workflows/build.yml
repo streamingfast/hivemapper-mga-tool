@@ -39,9 +39,10 @@ jobs:
         ls -la
         test mgaoffine.ubx
         test mgaoffine.md5
+        cp mgaoffine.ubx ../../
+        cd ../../
+        ls -la
     - uses: shallwefootball/s3-upload-action@master
-      run : |
-        cd cmd/mga
       with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }} 
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
