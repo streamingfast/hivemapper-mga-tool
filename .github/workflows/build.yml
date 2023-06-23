@@ -30,6 +30,7 @@ jobs:
         cd cmd/mga
         go build ./...
         ./mga  download "https://offline-live1.services.u-blox.com/GetOfflineData.ashx?token=${{ secrets.MGA_TOKEN }};gnss=gps"
+        ls -la
 
     # - name: Check if file exists
     #   run: |
