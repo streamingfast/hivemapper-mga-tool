@@ -32,13 +32,13 @@ jobs:
         ./mga  download "https://offline-live1.services.u-blox.com/GetOfflineData.ashx?token=${{ secrets.MGA_TOKEN }};gnss=gps"
         ls -la
 
-    # - name: Check if file exists
-    #   run: |
-    #     set -e 
-    #     test mgaoffine.ubx
-    #     test mgaoffine.md5
-    #     cat mgaoffine.md5
-    #     md5sum mgaoffine.ubx
+    - name: Check if file exists
+      run: |
+        set -e 
+        test mgaoffine.ubx
+        test mgaoffine.md5
+        cat mgaoffine.md5
+        md5sum mgaoffine.ubx
     # - uses: shallwefootball/s3-upload-action@master
     #     with:
     #       aws_key_id: ${{ secrets.AWS_KEY_ID }} 
