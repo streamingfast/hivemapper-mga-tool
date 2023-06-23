@@ -26,7 +26,7 @@ jobs:
       env: 
         MGA_TOKEN: ${{ secrets.MGA_TOKEN }}
       run: |
-        URL="https://offline-live1.services.u-blox.com/GetOfflineData.ashx?token=${{ secrets.MGA_TOKEN }};gnss=gps"
+        URL="https://offline-live1.services.u-blox.com/GetOfflineData.ashx?token=${{ MGA_TOKEN }};gnss=gps"
         cd cmd/mga
         go build ./...
         ./mga  download URL
