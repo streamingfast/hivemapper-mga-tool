@@ -35,7 +35,7 @@ jobs:
         test mgaoffine.ubx
         test mgaoffine.md5
 
-    - name: copy file to  s3
+    - name: Copy file to  s3
       shell: bash
       env:
         aws_key_id: ${{ secrets.AWS_KEY_ID }}
@@ -49,4 +49,7 @@ jobs:
         aws configure set default.region us-west-2
         echo "Configure complete"
         aws s3 cp cmd/mga/mgaoffline.ubx s3://$aws_s3_bucket/mgaoffline.ubx
+        aws s3 cp cmd/mga/mgaoffline.md5 s3://$aws_s3_bucket/mgaoffline.md5
+
+        
       
